@@ -64,7 +64,6 @@ public class DNSResolver {
         dataOutputStream.writeShort(0x0001);
     }
 
-
     private static String getIP(String domainName, String serverAddress, int serverNo) {
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -111,7 +110,6 @@ public class DNSResolver {
             dataInputStream.readShort();    //Query Type
             dataInputStream.readShort();    //Class : IN
 
-
             //loop through all answer RRs
             for (int i = 1; i <= answerRRs; i++) {
 
@@ -153,7 +151,6 @@ public class DNSResolver {
                 if (i == answerRRs) {
                     return ip;
                 }
-
             }
 
             //loop through all authority RRs
@@ -161,7 +158,6 @@ public class DNSResolver {
                 getDomainName(answer);
                 String type = getQueryType(dataInputStream.readShort());
                 initialRead();
-
 
                 switch (type) {
                     case "CNAME":
@@ -217,7 +213,6 @@ public class DNSResolver {
         dataInputStream.readShort();    //Data length :
     }
 
-
     private static String getipV6Address() throws IOException {
         int a = dataInputStream.readShort();
         int b = dataInputStream.readShort();
@@ -237,7 +232,6 @@ public class DNSResolver {
         int d = dataInputStream.readByte() & 0x000000ff;
         return String.format("%d.%d.%d.%d", a, b, c, d);
     }
-
 
     private static String getDomainName(byte[] answer) throws Exception {
         byte[] DomainNameByteArray = new byte[1024];
