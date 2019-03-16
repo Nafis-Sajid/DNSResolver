@@ -82,7 +82,7 @@ public class DNSResolver {
             //send the packet
             datagramSocket.send(datagramPacket);
             //set time out 1s (1000 ms)
-            datagramSocket.setSoTimeout(1000);
+            datagramSocket.setSoTimeout(2000);
 
             byte[] answer = new byte[1024];
             try {
